@@ -1,5 +1,5 @@
 0. gluLookAt
-1. draw cube, draw second cube with push pop matrix, change scene size by gluLookAt (eyeZ, centerZ)
+1. draw cube, draw second cube with push pop matrix, change scene size by gluLookAt (eyeZ, centerZ), loadIdentity
 2. rotate in same place
 3. translate in z
 4. combine 2,3 (does the order of the operations matter?)
