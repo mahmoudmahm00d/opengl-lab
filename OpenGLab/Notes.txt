@@ -18,3 +18,4 @@
 _____________________
 Be-aware: Copy-Paste cpp files from other folders will add a reference to them but not a real file duplicate.
 _____________________
+to run one cpp file and not another: propertirs of cpp file -> exclude from build

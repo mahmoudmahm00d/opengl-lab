@@ -1,0 +1,11 @@
+gluLookAt
+
+
+1. draw cube
+2. rotate in same place
+3. translate in z
+4. combine 2,3 (does the order of the operations matter?)
+5. heart pump in place
+6. draw circle
+7. draw 2 circles (one is fixed and the other is rotating arround the first)
+8. draw sphere
