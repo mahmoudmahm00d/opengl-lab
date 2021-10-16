@@ -58,6 +58,25 @@ int InitGL(GLvoid)										// All Setup For OpenGL Goes Here
 GLfloat delta = 0;
 
 
+void drawSquare()
+{
+	glBegin(GL_QUADS);
+
+	glColor3f(1.0f, 0.0f, 0.0f);
+	glVertex3i(1, 1, 0);
+
+	glColor3f(0.0f, 0.0f, 1.0f);
+	glVertex3i(-1, 1, 0);
+
+	glColor3f(0.0f, 1.0f, 0.0f);
+	glVertex3i(-1, -1, 0);
+
+	glColor3f(0.0f, 0.0f, 1.0f);
+	glVertex3i(1, -1, 0);
+
+	glEnd();
+}
+
 void DrawCircle(double radius = 2, int step = 100, GLfloat cX = 0, GLfloat cY = 0)
 {
 	GLfloat x, y, temp;
@@ -102,7 +121,6 @@ void drawSphere(double r, int lats, int longs) {
 		glEnd();
 	}
 }
-
 
 void moonAndEarth()
 {
@@ -172,14 +190,35 @@ void cubeViaSquads() {
 
 }
 
+void pushPopExample()
+{
+	// 1. save origin
+	glPushMatrix();
+
+	// 2. draw
+	glTranslated(2, 0, 0);
+	drawSquare();
+
+	// 3. back to origin
+	glPopMatrix();
+
+	// 4. draw
+	glTranslated(-2, 0, 0);
+	drawSquare();
+
+	// 5. back to origin
+	glPopMatrix();
+}
+
 void DrawGLScene(GLvoid)									// Here's Where We Do All The Drawing
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	// Clear Screen And Depth Buffer
 	glLoadIdentity();									// Reset The Current Modelview Matrix
 
-	gluLookAt(-0, 0, 0, 0, 0, -10, 0, 1, 0);
-
-	DrawCircle();
+	gluLookAt(0, 0, 15, 0, 0, -15, 0, 1, 0);
+	
+	pushPopExample();
+	// DrawCircle();
 	// cubeViaSquads();
 	// moonAndEarth();
 	
