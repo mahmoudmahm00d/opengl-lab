@@ -91,6 +91,27 @@ void drawSquare()
 	glFlush();											// Done Drawing The Quad	
 }
 
+void drawPentagon()
+{
+
+	glBegin(GL_TRIANGLES); // Begin triangle coordinates
+
+	glVertex3f(0.5f, 0.5f, -5.0f);
+	glVertex3f(1.5f, 0.5f, -5.0f);
+	glVertex3f(0.5f, 1.0f, -5.0f);
+
+	glVertex3f(0.5f, 1.0f, -5.0f);
+	glVertex3f(1.5f, 0.5f, -5.0f);
+	glVertex3f(1.5f, 1.0f, -5.0f);
+
+	glVertex3f(0.5f, 1.0f, -5.0f);
+	glVertex3f(1.5f, 1.0f, -5.0f);
+	glVertex3f(1.0f, 1.5f, -5.0f);
+
+	glEnd();
+	glFlush();
+}
+
 void DrawGLScene(GLvoid)									// Here's Where We Do All The Drawing
 {
 
@@ -101,8 +122,9 @@ void DrawGLScene(GLvoid)									// Here's Where We Do All The Drawing
 	glRotatef(angle, 0.0f, 0.0f, 1.0f);
 	angle++;
 
-	// drawTriangle();
-	drawSquare();
+	drawTriangle();
+	// drawSquare();
+	// drawPentagon();
 
 	//DO NOT REMOVE THIS
 	SwapBuffers(hDC);
