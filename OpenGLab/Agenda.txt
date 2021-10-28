@@ -1,3 +1,4 @@
+- drwa traingle: half of it is red, the other half is white
 0. gluLookAt
 1. draw cube, draw second cube with push pop matrix, change scene size by gluLookAt (eyeZ, centerZ), loadIdentity
 2. rotate in same place
