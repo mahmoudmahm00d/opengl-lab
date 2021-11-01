@@ -204,8 +204,9 @@ void pushPopExample2()
 
 	glTranslated(2, 0, 0);
 	drawSquare();
-	
-	glPushMatrix(); // Important: the top now is 6,0,-25, and now a new copy of 6,0,-25 will be created on top of the stack, so doing another 3 translations will make the coords at 12,0,-25, then calling a pop will get you back to -6,0,-25
+
+	glPushMatrix();
+	// Important: the top now is 6,0,-25, and now a new copy of 6,0,-25 will be created on top of the stack, so doing another 3 translations will make the coords at 12,0,-25, then calling a pop will get you back to -6,0,-25
 
 	// let's do it
 
@@ -235,6 +236,11 @@ void gluLookAtExample() // lots of exercises on this next time: playing with all
 	drawSquare(); // on z = 0,
 }
 
+GLfloat cx = -40;
+
+GLdouble angle = 0;
+
+
 void DrawGLScene(GLvoid) // Here's Where We Do All The Drawing
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear Screen And Depth Buffer
@@ -246,9 +252,10 @@ void DrawGLScene(GLvoid) // Here's Where We Do All The Drawing
 	// gluLookAtExample();
 
 	// pushPopExample();
-	pushPopExample2();
+	// pushPopExample2();
 	// DrawCircle();
 	// moonAndEarth();
+	// homework();
 
 	glFlush(); //DO NOT REMOVE THIS
 	SwapBuffers(hDC);

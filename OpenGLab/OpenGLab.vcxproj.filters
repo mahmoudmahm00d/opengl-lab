@@ -17,6 +17,7 @@
   <ItemGroup>
     <Text Include="Notes.txt" />
     <Text Include="Agenda.txt" />
+    <Text Include="Homework.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="start.cpp">
