@@ -58,20 +58,18 @@ int InitGL(GLvoid) // All Setup For OpenGL Goes Here
 GLfloat delta = 0;
 
 
-void drawSquare(float z = 0)
+void drawSquare(bool isRed = true, float z = 0)
 {
 	glBegin(GL_QUADS);
 
-	glColor3f(1.0f, 0.0f, 0.0f);
+	if (isRed)
+		glColor3f(1.0f, 0.0f, 0.0f);
+	else
+		glColor3f(0.0f, 0.0f, 1.0f);
+
 	glVertex3i(1, 1, z);
-
-	glColor3f(0.0f, 0.0f, 1.0f);
 	glVertex3i(-1, 1, z);
-
-	glColor3f(0.0f, 1.0f, 0.0f);
 	glVertex3i(-1, -1, z);
-
-	glColor3f(0.0f, 0.0f, 1.0f);
 	glVertex3i(1, -1, z);
 
 	glEnd();
@@ -161,30 +159,56 @@ void cubeViaSquads()
 	glEnd();
 }
 
-void pushPopExample()
+void lookAtExample2()
 {
-	// 1. save origin
-	glPushMatrix(); // save 0,0,0
+	// position the camera before drawing..
+	if (keys[VK_SPACE])
+		gluLookAt(0, 0, 0, 0, 0, -1, 0, 1, 0);
+	else
+		gluLookAt(0, 0, -20, 0, 0, 1, 0, 1, 0);
 
-	// 2. draw
-	glTranslated(0, 0, -10);
-	glPushMatrix(); // save 0,0,-10
-	drawSquare();
+	glTranslated(0, 0, -10); // passing a vector, not a point
+	drawSquare(); // red
+	glTranslated(0, 0, -1); // change z
+	drawSquare(false); // blue
 
-	// 3. back to origin = two pops
-	glPopMatrix();
-	glPopMatrix();
-
-	// 4. draw
-	glTranslated(2, 0, 0);
-	drawSquare(); // won't see it (scene in z 0 )
+	// play with up
 }
 
-void pushPopExample2()
+/*
+push-pop principles:
+1- you are dealing with just one matrix, only one
+2- any transformation you do is applied on the top matrix of the stack
+3- pushing is copying the current matrix and pasting the new copy on top of the current matrix (i.e. you save the last state of the current matrix, and every change you do is applied on the new matrix only, so at any time you can return to the old matrix using pop).
+ */
+void pushPopExample()
+{
+	glTranslated(2, 0, -10);
+	glPushMatrix(); // save 2,0,-10
+
+	glTranslated(-4, 0, 0);
+	glPushMatrix(); // save -2,0,-10
+	
+	glTranslated(0, -3, 0);
+	glPushMatrix(); // save -2,-3,-10 (current)
+
+	// drawings
+	drawSquare(); // draw at -2,-3,-10
+
+	glPopMatrix(); // back to -2,0,-10 and draw
+	drawSquare();
+	
+	glPopMatrix(); // back to 2,0,-10 and draw
+	drawSquare(true);
+	
+}
+
+void pushPopExample2() // skip it
 {
 	// Important: you when pushing matrix on top of the stack, you are not dealing with 2 matrices + do not think the top matrix on the stack is untouchable..
 	// In fact: the top matrix on the stack is the current matrix + it is affected by all the operations.. so push 0,0,-10 then transformation1, transformation2 then pop != getting the 0,0,-10.
 	// Important: two consecutive pushes... the second push will copy the top matrix and push it into the stack, so next transformations will be applied on the top one
+
 	// 1. save origin
 	glPushMatrix(); // put matrix 0,0,0 on top of the stack
 
@@ -220,7 +244,7 @@ void pushPopExample2()
 	drawSquare(); // current at 12,0,-25
 }
 
-void gluLookAtExample() // lots of exercises on this next time: playing with all triplets
+void lookAtExample() // lots of exercises on this next time: playing with all triplets
 {
 	glTranslated(0, 0, -10);
 
@@ -234,6 +258,7 @@ void gluLookAtExample() // lots of exercises on this next time: playing with all
 	          0, 1, 0);
 
 	drawSquare(); // on z = 0,
+
 }
 
 GLfloat cx = -40;
@@ -246,15 +271,13 @@ void DrawGLScene(GLvoid) // Here's Where We Do All The Drawing
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear Screen And Depth Buffer
 	glLoadIdentity(); // Reset The Current Modelview Matrix
 
-	// drawSquare();
-	// cubeViaSquads();
+	// lookAtExample();
+	// lookAtExample2();
 
-	// gluLookAtExample();
-
-	// pushPopExample();
+	pushPopExample();
 	// pushPopExample2();
+
 	// DrawCircle();
-	// moonAndEarth();
 	// homework();
 
 	glFlush(); //DO NOT REMOVE THIS
