@@ -76,8 +76,13 @@ void drawSquare(bool isRed = true, float z = 0)
 }
 
 void DrawCircle(GLfloat cX = 0, GLfloat cY = 0, double radius = 2,
-                int step = 100)
+                bool isRed = true, int step = 100)
 {
+	if (isRed)
+		glColor3f(1, 0, 0);
+	else
+		glColor3f(0, 0, 1);
+
 	GLfloat x, y, temp, xPrev, yPrev;
 	glBegin(GL_TRIANGLES);
 	temp = 360.0 / (float)step;
@@ -184,65 +189,27 @@ push-pop principles:
 void pushPopExample()
 {
 	glTranslated(2, 0, -10);
-	glPushMatrix(); // save 2,0,-10
+	glPushMatrix(); // current 2,0,-10
 
-	glTranslated(-4, 0, 0);
-	glPushMatrix(); // save -2,0,-10
-	
-	glTranslated(0, -3, 0);
-	glPushMatrix(); // save -2,-3,-10 (current)
+	glTranslated(-4, 0, 0); // current -2,0,-10
+	glPushMatrix(); // stack: -2,0,-10 -> -2,0,-10
+
+	glTranslated(0, -3, 0); // stack: -2, 0, -10 -> - 2, -3, -10
+	glPushMatrix(); //  -2, 0, -10 -> - 2, -3, -10 -> - 2, -3, -10
 
 	// drawings
 	drawSquare(); // draw at -2,-3,-10
 
+	glPopMatrix(); // back to -2,-3,-10 and draw
+	drawSquare();
+
 	glPopMatrix(); // back to -2,0,-10 and draw
-	drawSquare();
-	
-	glPopMatrix(); // back to 2,0,-10 and draw
-	drawSquare(true);
-	
+	drawSquare(false);
+
+	glPopMatrix();
+	// if not exist -> there will be additional matrix at every DrawGlScene(), then a stackoverflow will happen
 }
 
-void pushPopExample2() // skip it
-{
-	// Important: you when pushing matrix on top of the stack, you are not dealing with 2 matrices + do not think the top matrix on the stack is untouchable..
-	// In fact: the top matrix on the stack is the current matrix + it is affected by all the operations.. so push 0,0,-10 then transformation1, transformation2 then pop != getting the 0,0,-10.
-	// Important: two consecutive pushes... the second push will copy the top matrix and push it into the stack, so next transformations will be applied on the top one
-
-	// 1. save origin
-	glPushMatrix(); // put matrix 0,0,0 on top of the stack
-
-	// 2. draw
-	glTranslated(0, 0, -25);
-	glPushMatrix(); // put 0,0,-25 on top
-	drawSquare();
-
-	// 3. make another copy of 0,0,-25 on top of the stack
-	glPushMatrix(); // create a new copy of 0,0,-25 and put it on top
-
-	glTranslated(2, 0, 0);
-	drawSquare();
-
-	glTranslated(2, 0, 0);
-	drawSquare();
-
-	glTranslated(2, 0, 0);
-	drawSquare();
-
-	glPushMatrix();
-	// Important: the top now is 6,0,-25, and now a new copy of 6,0,-25 will be created on top of the stack, so doing another 3 translations will make the coords at 12,0,-25, then calling a pop will get you back to -6,0,-25
-
-	// let's do it
-
-	glTranslated(2, 0, 0);
-	drawSquare();
-
-	glTranslated(2, 0, 0);
-	drawSquare();
-
-	glTranslated(2, 0, 0);
-	drawSquare(); // current at 12,0,-25
-}
 
 void lookAtExample() // lots of exercises on this next time: playing with all triplets
 {
@@ -258,7 +225,6 @@ void lookAtExample() // lots of exercises on this next time: playing with all tr
 	          0, 1, 0);
 
 	drawSquare(); // on z = 0,
-
 }
 
 GLfloat cx = -40;
@@ -266,19 +232,42 @@ GLfloat cx = -40;
 GLdouble angle = 0;
 
 
+GLfloat x = -15;
+
+void homework()
+{
+	double radius = 1;
+
+	glTranslated(0, 0, -15);
+	DrawCircle(0, 0, radius);
+	if (x < -2 * radius || angle >= 180)
+	{
+		// move case
+		x += 1;
+		DrawCircle(x, 0, radius, false);
+	}
+	else
+	{
+		// collision
+		glRotated(angle, 0, 0, -1);
+		angle += 2;
+		x = 2 * radius;
+		DrawCircle(-2 * radius, 0, radius, false);
+	}
+}
+
 void DrawGLScene(GLvoid) // Here's Where We Do All The Drawing
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear Screen And Depth Buffer
 	glLoadIdentity(); // Reset The Current Modelview Matrix
 
-	// lookAtExample();
+	lookAtExample();
 	// lookAtExample2();
-
-	pushPopExample();
+	// pushPopExample();
 	// pushPopExample2();
 
 	// DrawCircle();
-	// homework();
+	homework();
 
 	glFlush(); //DO NOT REMOVE THIS
 	SwapBuffers(hDC);
