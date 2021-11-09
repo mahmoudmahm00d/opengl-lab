@@ -185,6 +185,7 @@ push-pop principles:
 1- you are dealing with just one matrix, only one
 2- any transformation you do is applied on the top matrix of the stack
 3- pushing is copying the current matrix and pasting the new copy on top of the current matrix (i.e. you save the last state of the current matrix, and every change you do is applied on the new matrix only, so at any time you can return to the old matrix using pop).
+4- number of pops must be equal to number of pushes
  */
 void pushPopExample()
 {
