@@ -30,26 +30,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -87,13 +87,13 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>GLAUX.lib;GLU32.lib;glut.lib;OPENGL32.lib;glut32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Glaux.lib;GLU32.lib;glut.lib;OPENGL32.lib;glut32.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -141,10 +141,85 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Text Include="Notes.txt" />
+    <Text Include="Blending.md" />
+    <Text Include="Docs\Notes.txt" />
+    <Text Include="MudData\World.txt" />
+    <Text Include="Soledad89OpenGLNehe demos\how-to-run.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="start.cpp" />
+    <ClCompile Include="Lab demos\3DModels\3dmodels_demo.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Lab demos\3DModels\3DTexture.cpp" />
+    <ClCompile Include="Lab demos\3DModels\Model3DS.cpp" />
+    <ClCompile Include="Lab demos\Blending\blending_demo.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Lab demos\Textures\BasicExamples.cpp" />
+    <ClCompile Include="Lab demos\Textures\textures_demo.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Lab demos\Textures\texture.cpp" />
+    <ClCompile Include="Soledad89OpenGLNehe demos\crazy_grid_demo.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Soledad89OpenGLNehe demos\Lesson12_demo.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Soledad89OpenGLNehe demos\mud_demo.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Soledad89OpenGLNehe demos\NeHeGL.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Soledad89OpenGLNehe demos\shots_demo.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Lab demos\3DModels\3DTexture.h" />
+    <ClInclude Include="Lab demos\3DModels\Model_3DS.h" />
+    <ClInclude Include="Lab demos\Textures\BasicExamples.h" />
+    <ClInclude Include="Lab demos\Textures\texture.h" />
+    <ClInclude Include="Soledad89OpenGLNehe demos\NeHeGL.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="legacy_stdio_definitions.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="CrazyGridData\Font.bmp" />
+    <Image Include="CrazyGridData\Image.bmp" />
+    <Image Include="CrazyGridData\tiger.bmp" />
+    <Image Include="Data\Cube.bmp" />
+    <Image Include="Docs\exclude-from-build.png" />
+    <Image Include="EarthData\Earth.bmp" />
+    <Image Include="Images\Glass.bmp" />
+    <Image Include="Images\nature.bmp" />
+    <Image Include="Images\NeHe.bmp" />
+    <Image Include="Images\sky-up.bmp" />
+    <Image Include="Images\tiger.bmp" />
+    <Image Include="MudData\Mud.bmp" />
+    <Image Include="ShotsData\BlueFace.tga" />
+    <Image Include="ShotsData\Bucket.tga" />
+    <Image Include="ShotsData\Coke.tga" />
+    <Image Include="ShotsData\Crosshair.tga" />
+    <Image Include="ShotsData\Explode.tga" />
+    <Image Include="ShotsData\Font.tga" />
+    <Image Include="ShotsData\Ground.tga" />
+    <Image Include="ShotsData\Sky.tga" />
+    <Image Include="ShotsData\Target.tga" />
+    <Image Include="ShotsData\Vase.tga" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="CrazyGridData\Complete.wav" />
+    <Media Include="CrazyGridData\Die.wav" />
+    <Media Include="CrazyGridData\Freeze.wav" />
+    <Media Include="CrazyGridData\Hourglass.wav" />
+    <Media Include="ShotsData\Shot.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\README.md" />
+    <None Include="Lab demos\3DModels\tank.3DS" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

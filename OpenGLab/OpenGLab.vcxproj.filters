@@ -13,13 +13,214 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Resource Files\Mud">
+      <UniqueIdentifier>{10dbace0-0dca-42bf-b3d7-274ba16cea24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Shots">
+      <UniqueIdentifier>{4d4a75a3-abc6-46d9-9a5e-f513582bd26a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\CrazyGrid">
+      <UniqueIdentifier>{2dd96cde-b3b1-477e-8de4-4ad47e20777e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Class">
+      <UniqueIdentifier>{c6b8976e-b610-42a0-a26f-d94c9d930375}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Lab">
+      <UniqueIdentifier>{078733d0-1bd3-4285-a4f9-3df006d923b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Lab\3dmodels">
+      <UniqueIdentifier>{f1ba290c-6463-4f67-afc5-3dc6a2c8b7ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Lab\Textures">
+      <UniqueIdentifier>{e4b8e195-b00d-4ca6-afb8-9299f240167a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Lab\Blending">
+      <UniqueIdentifier>{16f75942-1bf8-412d-8dcf-82c9a28b7c7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Solution Items">
+      <UniqueIdentifier>{bce76cd2-a6bc-40ef-9606-7353ea4f224f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Soledad89OpenGLNehe demos">
+      <UniqueIdentifier>{8b69f5c9-e45c-4b76-8bb2-676ccbde7949}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Soledad89OpenGLNehe demos\CrazyGrid">
+      <UniqueIdentifier>{603da8ff-12dd-40a4-8a08-faf07519b47b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Soledad89OpenGLNehe demos\Lesson12">
+      <UniqueIdentifier>{f4c4e36c-18c3-4c20-9943-ecc8718ac0f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Soledad89OpenGLNehe demos\MudRoom">
+      <UniqueIdentifier>{be4a6b06-5b53-4adc-b257-8cbca1d62031}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Soledad89OpenGLNehe demos\Shots">
+      <UniqueIdentifier>{8d4131c3-9527-4d3a-9e90-a98f8dddc90a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Notes.txt" />
+    <Text Include="MudData\World.txt">
+      <Filter>Resource Files\Mud</Filter>
+    </Text>
+    <Text Include="Blending.md">
+      <Filter>Source Files\Lab\Blending</Filter>
+    </Text>
+    <Text Include="Docs\Notes.txt">
+      <Filter>Solution Items</Filter>
+    </Text>
+    <Text Include="Soledad89OpenGLNehe demos\how-to-run.txt">
+      <Filter>Source Files\Soledad89OpenGLNehe demos\Shots</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="start.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Soledad89OpenGLNehe demos\Lesson12_demo.cpp">
+      <Filter>Source Files\Soledad89OpenGLNehe demos\Lesson12</Filter>
     </ClCompile>
+    <ClCompile Include="Soledad89OpenGLNehe demos\NeHeGL.cpp">
+      <Filter>Source Files\Soledad89OpenGLNehe demos\Shots</Filter>
+    </ClCompile>
+    <ClCompile Include="Soledad89OpenGLNehe demos\shots_demo.cpp">
+      <Filter>Source Files\Soledad89OpenGLNehe demos\Shots</Filter>
+    </ClCompile>
+    <ClCompile Include="Soledad89OpenGLNehe demos\mud_demo.cpp">
+      <Filter>Source Files\Soledad89OpenGLNehe demos\MudRoom</Filter>
+    </ClCompile>
+    <ClCompile Include="Lab demos\3DModels\Model3DS.cpp">
+      <Filter>Source Files\Lab\3dmodels</Filter>
+    </ClCompile>
+    <ClCompile Include="Lab demos\3DModels\3DTexture.cpp">
+      <Filter>Source Files\Lab\3dmodels</Filter>
+    </ClCompile>
+    <ClCompile Include="Lab demos\3DModels\3dmodels_demo.cpp">
+      <Filter>Source Files\Lab\3dmodels</Filter>
+    </ClCompile>
+    <ClCompile Include="Lab demos\Blending\blending_demo.cpp">
+      <Filter>Source Files\Lab\Blending</Filter>
+    </ClCompile>
+    <ClCompile Include="Lab demos\Textures\texture.cpp">
+      <Filter>Source Files\Lab\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Lab demos\Textures\textures_demo.cpp">
+      <Filter>Source Files\Lab\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Lab demos\Textures\BasicExamples.cpp">
+      <Filter>Source Files\Lab\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Soledad89OpenGLNehe demos\crazy_grid_demo.cpp">
+      <Filter>Source Files\Soledad89OpenGLNehe demos\CrazyGrid</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Lab demos\3DModels\3DTexture.h">
+      <Filter>Source Files\Lab\3dmodels</Filter>
+    </ClInclude>
+    <ClInclude Include="Lab demos\3DModels\Model_3DS.h">
+      <Filter>Source Files\Lab\3dmodels</Filter>
+    </ClInclude>
+    <ClInclude Include="Lab demos\Textures\BasicExamples.h">
+      <Filter>Source Files\Lab\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Lab demos\Textures\texture.h">
+      <Filter>Source Files\Lab\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Soledad89OpenGLNehe demos\NeHeGL.h">
+      <Filter>Source Files\Soledad89OpenGLNehe demos\Shots</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="ShotsData\Vase.tga">
+      <Filter>Resource Files\Shots</Filter>
+    </Image>
+    <Image Include="ShotsData\Target.tga">
+      <Filter>Resource Files\Shots</Filter>
+    </Image>
+    <Image Include="ShotsData\Sky.tga">
+      <Filter>Resource Files\Shots</Filter>
+    </Image>
+    <Image Include="ShotsData\Ground.tga">
+      <Filter>Resource Files\Shots</Filter>
+    </Image>
+    <Image Include="ShotsData\Font.tga">
+      <Filter>Resource Files\Shots</Filter>
+    </Image>
+    <Image Include="ShotsData\Explode.tga">
+      <Filter>Resource Files\Shots</Filter>
+    </Image>
+    <Image Include="ShotsData\Crosshair.tga">
+      <Filter>Resource Files\Shots</Filter>
+    </Image>
+    <Image Include="ShotsData\Coke.tga">
+      <Filter>Resource Files\Shots</Filter>
+    </Image>
+    <Image Include="ShotsData\Bucket.tga">
+      <Filter>Resource Files\Shots</Filter>
+    </Image>
+    <Image Include="ShotsData\BlueFace.tga">
+      <Filter>Resource Files\Shots</Filter>
+    </Image>
+    <Image Include="MudData\Mud.bmp">
+      <Filter>Resource Files\Mud</Filter>
+    </Image>
+    <Image Include="CrazyGridData\Font.bmp">
+      <Filter>Resource Files\CrazyGrid</Filter>
+    </Image>
+    <Image Include="CrazyGridData\Image.bmp">
+      <Filter>Resource Files\CrazyGrid</Filter>
+    </Image>
+    <Image Include="CrazyGridData\tiger.bmp">
+      <Filter>Resource Files\CrazyGrid</Filter>
+    </Image>
+    <Image Include="Images\nature.bmp">
+      <Filter>Resource Files\Class</Filter>
+    </Image>
+    <Image Include="Images\NeHe.bmp">
+      <Filter>Resource Files\Class</Filter>
+    </Image>
+    <Image Include="Images\sky-up.bmp">
+      <Filter>Resource Files\Class</Filter>
+    </Image>
+    <Image Include="Images\tiger.bmp">
+      <Filter>Resource Files\Class</Filter>
+    </Image>
+    <Image Include="EarthData\Earth.bmp">
+      <Filter>Resource Files\Class</Filter>
+    </Image>
+    <Image Include="Images\Glass.bmp">
+      <Filter>Resource Files\Class</Filter>
+    </Image>
+    <Image Include="Data\Cube.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Docs\exclude-from-build.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="ShotsData\Shot.wav">
+      <Filter>Resource Files\Shots</Filter>
+    </Media>
+    <Media Include="CrazyGridData\Die.wav">
+      <Filter>Resource Files\CrazyGrid</Filter>
+    </Media>
+    <Media Include="CrazyGridData\Complete.wav">
+      <Filter>Resource Files\CrazyGrid</Filter>
+    </Media>
+    <Media Include="CrazyGridData\Hourglass.wav">
+      <Filter>Resource Files\CrazyGrid</Filter>
+    </Media>
+    <Media Include="CrazyGridData\Freeze.wav">
+      <Filter>Resource Files\CrazyGrid</Filter>
+    </Media>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Lab demos\3DModels\tank.3DS">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\README.md">
+      <Filter>Solution Items</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="legacy_stdio_definitions.lib">
+      <Filter>Solution Items</Filter>
+    </Library>
   </ItemGroup>
 </Project>

@@ -1,0 +1,9 @@
+﻿- legacy_stdio_definitions.lib is needed (drag-drop to sln or link it via linker)
+
+- CrazyGrid needs to add winmm.lib to linker -> input
+	- it's already added in this project, but in case you want to run the code in a project of your own.
+
+- Note: folders in visual studio are filters, not real folders, 
+	so paths in your code is relative to hard disk placement of the image..
+
+- #define _CRT_SECURE_NO_DEPRECATE // important
