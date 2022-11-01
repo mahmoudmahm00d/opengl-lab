@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Notes.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="start.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
