@@ -262,7 +262,7 @@ void DrawGLScene(GLvoid) // Here's Where We Do All The Drawing
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear Screen And Depth Buffer
 	glLoadIdentity(); // Reset The Current Modelview Matrix
 
-	lookAtExample();
+	// lookAtExample();
 	// lookAtExample2();
 	// pushPopExample();
 	// pushPopExample2();
@@ -322,7 +322,7 @@ GLvoid KillGLWindow(GLvoid) // Properly Kill The Window
 *	bits			- Number Of Bits To Use For Color (8/16/24/32)			*
 *	fullscreenflag	- Use Fullscreen Mode (TRUE) Or Windowed Mode (FALSE)	*/
 
-BOOL CreateGLWindow(char* title, int width, int height, int bits, bool fullscreenflag)
+BOOL CreateGLWindow(char* title, int width, int height, byte bits, bool fullscreenflag)
 {
 	GLuint PixelFormat; // Holds The Results After Searching For A Match
 	WNDCLASS wc; // Windows Class Structure

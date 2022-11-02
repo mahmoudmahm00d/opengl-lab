@@ -1,5 +1,0 @@
-- drwa traingle: half of it is red, the other half is white
-- gluLookAt: draw two circles with two colors, one behind the other, use lookAt to look at the two on mouse click..
-- rotate/heart-pump in place
-- draw circle with 3 params: cx,cy,radius
-- draw 2 circles (one is fixed and the other is rotating arround the first)

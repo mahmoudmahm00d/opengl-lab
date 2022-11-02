@@ -15,14 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Notes.txt" />
-    <Text Include="Agenda.txt" />
-    <Text Include="Homework.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="start.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="lec2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
