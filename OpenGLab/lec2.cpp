@@ -53,224 +53,46 @@ int InitGL(GLvoid) // All Setup For OpenGL Goes Here
 	return TRUE; // Initialization Went OK
 }
 
-//float angle = 0;
-// GLfloat xRotated = 0, yRotated = 0, zRotated = 0;
-GLfloat delta = 0;
-
-
-void drawSquare(bool isRed = true, float z = 0)
+struct point
 {
-	glBegin(GL_QUADS);
+	float x;
+	float y;
+	float z;
 
-	if (isRed)
-		glColor3f(1.0f, 0.0f, 0.0f);
-	else
-		glColor3f(0.0f, 0.0f, 1.0f);
+	point(float x, float y, float z)
+	{
+		this->x = x;
+		this->y = y;
+		this->z = z;
+	}
+};
 
-	glVertex3i(1, 1, z);
-	glVertex3i(-1, 1, z);
-	glVertex3i(-1, -1, z);
-	glVertex3i(1, -1, z);
-
-	glEnd();
-}
-
-void DrawCircle(GLfloat cX = 0, GLfloat cY = 0, double radius = 2,
-                bool isRed = true, int step = 100)
+void DrawCircle(point center, double radius = 2)
 {
-	if (isRed)
-		glColor3f(1, 0, 0);
-	else
-		glColor3f(0, 0, 1);
-
-	GLfloat x, y, temp, xPrev, yPrev;
+	int steps = 360;
+	float theta = 0;
 	glBegin(GL_TRIANGLES);
-	temp = 360.0 / (float)step;
-	long double PI = 3.14;
-	xPrev = cX + radius * cos(0);
-	yPrev = cY + radius * sin(0);
-	for (float i = 0; i <= 361; i += temp)
+	for (int step = 0; step <= steps; step++)
 	{
-		x = cX + radius * cos(i * PI / 180.0f);
-		y = cY + radius * sin(i * PI / 180.0f);
-		glVertex2f(cX, cY);
-		glVertex2f(xPrev, yPrev);
-		glVertex2f(x, y);
-		xPrev = x;
-		yPrev = y;
+		float x = center.x + radius * cos(theta);
+		float y = center.y + radius * sin(theta);
+		glVertex3f(x, y, -6);
+		theta = theta + .5;
+		x = center.x + radius * cos(theta);
+		y = center.y + radius * sin(theta);
+		glVertex3f(x, y, -6);
+		glVertex3f(center.x, center.y, -6);
+		theta = theta + .5;
 	}
 	glEnd();
 }
 
-void moonAndEarth()
-{
-	glTranslated(0, 0, -35);
-
-	glColor3f(0.0f, 0.0f, 1.0f);
-	DrawCircle(0, 0, 4);
-
-	// change the order (shift rotation up) => camera (eye) direction won't change when coords changes
-	glRotatef(delta++, 0, 1, 0);
-
-	glColor3f(1.0f, 0.0f, 0.0f);
-	DrawCircle(10, 0, 2);
-}
-
-void cubeViaSquads()
-{
-	glShadeModel(GL_FLAT);
-
-	// DO NOT put transformation between glBegin and glEnd
-	delta -= 2;
-
-	// glTranslatef(0, 0, delta * .1);
-	// glRotatef(delta * .5, 1, 1, 0);
-
-	// glScalef(1, 2, 3);
-	glColor3f(1.0f, 1.0f, 0.0f);
-
-	glBegin(GL_QUADS); // Draw The Cube Using quads
-
-	glVertex3f(1.0f, 1.0f, -1.0f); //   (Top)
-	glVertex3f(-1.0f, 1.0f, -1.0f);
-	glVertex3f(-1.0f, 1.0f, 1.0f);
-	glVertex3f(1.0f, 1.0f, 1.0f);
-
-	glVertex3f(1.0f, -1.0f, 1.0f); // (Bottom)
-	glVertex3f(-1.0f, -1.0f, 1.0f);
-	glVertex3f(-1.0f, -1.0f, -1.0f);
-	glVertex3f(1.0f, -1.0f, -1.0f);
-
-	glVertex3f(-1.0f, 1.0f, 1.0f); // (front)
-	glVertex3f(1.0f, 1.0f, 1.0f);
-	glVertex3f(1.0f, -1.0f, 1.0f);
-	glVertex3f(-1.0f, -1.0f, 1.0f);
-
-	glVertex3f(1.0f, -1.0f, -1.0f); // (Back)
-	glVertex3f(-1.0f, -1.0f, -1.0f);
-	glVertex3f(-1.0f, 1.0f, -1.0f);
-	glVertex3f(1.0f, 1.0f, -1.0f);
-
-	glVertex3f(-1.0f, 1.0f, 1.0f); //  (Left)
-	glVertex3f(-1.0f, 1.0f, -1.0f);
-	glVertex3f(-1.0f, -1.0f, -1.0f);
-	glVertex3f(-1.0f, -1.0f, 1.0f);
-
-	glVertex3f(1.0f, 1.0f, -1.0f); // (Right)
-	glVertex3f(1.0f, 1.0f, 1.0f);
-	glVertex3f(1.0f, -1.0f, 1.0f);
-	glVertex3f(1.0f, -1.0f, -1.0f);
-
-	glEnd();
-}
-
-void lookAtExample2()
-{
-	// position the camera before drawing..
-	if (keys[VK_SPACE])
-		gluLookAt(0, 0, 0, 0, 0, -1, 0, 1, 0);
-	else
-		gluLookAt(0, 0, -20, 0, 0, 1, 0, 1, 0);
-
-	glTranslated(0, 0, -10); // passing a vector, not a point
-	drawSquare(); // red
-	glTranslated(0, 0, -1); // change z
-	drawSquare(false); // blue
-
-	// play with up
-}
-
-/*
-push-pop principles:
-1- you are dealing with just one matrix, only one
-2- any transformation you do is applied on the top matrix of the stack
-3- pushing is copying the current matrix and pasting the new copy on top of the current matrix (i.e. you save the last state of the current matrix, and every change you do is applied on the new matrix only, so at any time you can return to the old matrix using pop).
-4- number of pops must be equal to number of pushes
- */
-void pushPopExample()
-{
-	glTranslated(2, 0, -10);
-	glPushMatrix(); // current 2,0,-10
-
-	glTranslated(-4, 0, 0); // current -2,0,-10
-	glPushMatrix(); // stack: -2,0,-10 -> -2,0,-10
-
-	glTranslated(0, -3, 0); // stack: -2, 0, -10 -> - 2, -3, -10
-	glPushMatrix(); //  -2, 0, -10 -> - 2, -3, -10 -> - 2, -3, -10
-
-	// drawings
-	drawSquare(); // draw at -2,-3,-10
-
-	glPopMatrix(); // back to -2,-3,-10 and draw
-	drawSquare();
-
-	glPopMatrix(); // back to -2,0,-10 and draw
-	drawSquare(false);
-
-	glPopMatrix();
-	// if not exist -> there will be additional matrix at every DrawGlScene(), then a stackoverflow will happen
-}
-
-
-void lookAtExample() // lots of exercises on this next time: playing with all triplets
-{
-	glTranslated(0, 0, -10);
-
-	// glMatrixMode(GL_MODELVIEW); // default, important but no need for it
-	// look at (0,0,-10) does not affect the scene coordinates
-	// but eye-point can be translated in all directions
-	// Important: The UP vector must not be parallel to the line of sight from the eye point to the reference point.
-	// up vector analogy = rotating the camera or rotating the scene
-	gluLookAt(0, 0, 0,
-	          0, 0, -1,
-	          0, 1, 0);
-
-	drawSquare(); // on z = 0,
-}
-
-GLfloat cx = -40;
-
-GLdouble angle = 0;
-
-
-GLfloat x = -15;
-
-void homework()
-{
-	double radius = 1;
-
-	glTranslated(0, 0, -15);
-	DrawCircle(0, 0, radius);
-	if (x < -2 * radius || angle >= 180)
-	{
-		// move case
-		x += 1;
-		DrawCircle(x, 0, radius, false);
-	}
-	else
-	{
-		// collision
-		glRotated(angle, 0, 0, -1);
-		angle += 2;
-		x = 2 * radius;
-		DrawCircle(-2 * radius, 0, radius, false);
-	}
-}
-
-void DrawGLScene(GLvoid) // Here's Where We Do All The Drawing
+void DrawGLScene() // Here's Where We Do All The Drawing
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear Screen And Depth Buffer
 	glLoadIdentity(); // Reset The Current Modelview Matrix
-
-	// lookAtExample();
-	// lookAtExample2();
-	// pushPopExample();
-	// pushPopExample2();
-
-	// DrawCircle();
-	homework();
-
-	glFlush(); //DO NOT REMOVE THIS
+	point c = {0, 0, -6};
+	DrawCircle(c);
 	SwapBuffers(hDC);
 }
 
