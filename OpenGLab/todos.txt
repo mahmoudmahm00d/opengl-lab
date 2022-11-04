@@ -1,0 +1,29 @@
+﻿// todo: draw circle by many triangles, play with the precision..
+// todo: why this code is not working? cuz: glVertex3i + 0.5
+// todo: why this rectangle is not drawn properly? order
+
+void homework()
+{
+	// Note: build this code line by line, show the misbehavior then correct it, start with the moving circle passing through the fixed circle
+	const float radius = 1;
+	glTranslated(0, 0, -10);
+	DrawCircle(0, 0, radius);
+	if (cx < -radius * 2 || cx > radius * 2 || angle > 180) // no adjacent
+	{
+		cx++;
+		DrawCircle(cx, 0, radius);
+	}
+	else
+	{
+		glRotated(angle, 0, 0, -1);
+		angle++;
+		DrawCircle(-radius * 2, 0, radius);
+		cx = radius * 2;
+	}
+}
+
+- drwa traingle : half of it is red, the other half is white
+- gluLookAt : draw two circles with two colors, one behind the other, use lookAt to look at the two on mouse click..
+- rotate / heart - pump in place
+- draw circle with 3 params : cx, cy, radius
+- draw 2 circles(one is fixed and the other is rotating arround the first)

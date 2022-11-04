@@ -141,9 +141,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="lec2.cpp">
+    <ClCompile Include="Homework.cpp" />
+    <ClCompile Include="lab.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="Point.cpp" />
+    <Text Include="todos.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Homework.h" />
+    <ClInclude Include="Point.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

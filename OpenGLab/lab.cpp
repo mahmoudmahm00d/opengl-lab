@@ -9,8 +9,10 @@
 #include <windows.h>		// Header File For Windows
 #include <gl\gl.h>			// Header File For The OpenGL32 Library
 #include <gl\glu.h>			// Header File For The GLu32 Library
-//#include <gl\glaux.h>		// Header File For The Glaux Library
 #include <cmath>
+
+#include "Homework.h"
+#include "Point.h"
 HDC hDC = NULL; // Private GDI Device Context
 HGLRC hRC = NULL; // Permanent Rendering Context
 HWND hWnd = NULL; // Holds Our Window Handle
@@ -53,46 +55,48 @@ int InitGL(GLvoid) // All Setup For OpenGL Goes Here
 	return TRUE; // Initialization Went OK
 }
 
-struct point
-{
-	float x;
-	float y;
-	float z;
+float x = -10.0f;
+Point c = {0, 4};
+Point c2 = {0, 5};
+Point sp = {-1, 4.0};
+Point ep = {1, 4.0};
 
-	point(float x, float y, float z)
-	{
-		this->x = x;
-		this->y = y;
-		this->z = z;
-	}
-};
-
-void DrawCircle(point center, double radius = 2)
+void DrawMovingCircleOverCosineWave()
 {
-	int steps = 360;
-	float theta = 0;
-	glBegin(GL_TRIANGLES);
-	for (int step = 0; step <= steps; step++)
-	{
-		float x = center.x + radius * cos(theta);
-		float y = center.y + radius * sin(theta);
-		glVertex3f(x, y, -6);
-		theta = theta + .5;
-		x = center.x + radius * cos(theta);
-		y = center.y + radius * sin(theta);
-		glVertex3f(x, y, -6);
-		glVertex3f(center.x, center.y, -6);
-		theta = theta + .5;
-	}
-	glEnd();
+	glPointSize(3);
+	glColor3f(0, 1, 0);
+	const float minX = -10.0f;
+	const float maxX = 10.0f;
+	Homework::DrawCosineWave(minX, maxX);
+	glColor3f(1, 0, 0);
+	Homework::DrawSolidCircle(Point(x, cos(x)), 1);
+	x = x + 0.25f;
+	if (x > maxX)
+		x = minX;
 }
+
+void DrawCharacter()
+{
+	Homework::DrawCharacter(Point{-10, 10}, 4, 2.5, 1.5, 1.25);
+}
+
+#define PI 3.14159265
 
 void DrawGLScene() // Here's Where We Do All The Drawing
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear Screen And Depth Buffer
-	glLoadIdentity(); // Reset The Current Modelview Matrix
-	point c = {0, 0, -6};
-	DrawCircle(c);
+	glLoadIdentity();
+	float zsx = sin(0);
+	glTranslated(0, 0, -15);
+	// glPointSize(1);
+	// glLineWidth(1);
+	// DrawMovingCircleOverCosineWave();
+	// glScaled(0.75, 0.75, 1);
+	// glPointSize(2);
+	// glLineWidth(2);
+	// DrawCharacter();
+	glColor3f(0.5f, 1, 0.5f);
+	Homework::DrawBicycle(Point{0, 3}, 1, 2);
 	SwapBuffers(hDC);
 }
 
@@ -404,7 +408,6 @@ int WINAPI WinMain(HINSTANCE hInstance, // Instance
 	{
 		return 0; // Quit If Window Was Not Created
 	}
-
 
 	//Set drawing timer to 20 frame per second
 	UINT timer = SetTimer(hWnd, 0, 50, (TIMERPROC)NULL);
