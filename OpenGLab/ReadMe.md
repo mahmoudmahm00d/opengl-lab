@@ -1,3 +1,6 @@
-﻿Rebuild and run, you should get something like the following:
+﻿Homework TODOS:
 
-![run](../res/run.gif)
+1. Implement all `Homework.h` funtions in `Homework.cpp`
+2. Draw a scnen 99.99% similar to the following:
+
+![run](../res/demo.gif)

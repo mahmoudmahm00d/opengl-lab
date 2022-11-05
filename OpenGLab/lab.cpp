@@ -6,10 +6,14 @@
  *		Visit My Site At nehe.gamedev.net
  */
 
+#include <cmath>
 #include <windows.h>		// Header File For Windows
 #include <gl\gl.h>			// Header File For The OpenGL32 Library
 #include <gl\glu.h>			// Header File For The GLu32 Library
 #include <glaux.h>		// Header File For The Glaux Library
+
+#include "Homework.h"
+#include "Point.h"
 
 HDC hDC = NULL; // Private GDI Device Context
 HGLRC hRC = NULL; // Permanent Rendering Context
@@ -52,38 +56,16 @@ int InitGL(GLvoid) // All Setup For OpenGL Goes Here
 	return TRUE; // Initialization Went OK
 }
 
-void DrawGLScene(GLvoid) // Here's Where We Do All The Drawing
+void DrawGLScene() // Here's Where We Do All The Drawing
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear Screen And Depth Buffer
-	glLoadIdentity(); // Reset The Current Modelview Matrix
-	
-	glBegin(GL_QUADS); // Every 4 points will be connected together
-
-	glColor3f(0.0f, 1.0f, 0.0f);
-	glVertex3i(2, 1, -6);
-	glVertex3i(-1, 1, -6);
-	glVertex3i(-1, -1, -6);
-	glVertex3i(2, -1, -6);
-
-	glEnd();
-
-	glBegin(GL_TRIANGLES); // Every 3 points will be connected together
-
-	glColor3f(0.0f, 0.0f, 1.0f);
-	glVertex3f(0, 0.5, -5);
-	glVertex3f(-0.5, -0.5, -5);
-	glVertex3f(0.5, -0.5, -5);
-
-	glColor3f(1.0f, 0.0f, 0.0f);
-	glVertex3f(0, 0.5, -5);
-	glVertex3f(+0.5, -0.5, -5);
-	glVertex3f(1.5, -0.5, -5);
-
-
-	glEnd();
-
-
-	//DO NOT REMOVE THIS
+	glLoadIdentity();
+	glTranslated(0, 0, -25);
+	glColor3f(1, 0, 0);
+	// TODO-2: Draw the scene similar to the one in `../res/demo.gif`
+	// remove the next rectangle
+	Homework::DrawRectangle(Point{1, 1}, Point{-1, 1},
+	                        Point{-1, -1}, Point{1, -1});
 	SwapBuffers(hDC);
 }
 
