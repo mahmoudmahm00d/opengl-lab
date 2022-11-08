@@ -24,4 +24,6 @@ public:
 	static void DrawCharacter(Point nose, float bodyLength,
 	                          float headRadius, float handLength,
 	                          float legLength);
+	static void DrawBicycle(Point seatCenterPoint, float wheelRadius,
+		float distanceBetweenWheels);
 };

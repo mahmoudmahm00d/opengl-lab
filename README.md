@@ -4,3 +4,7 @@ Homework TODOS:
 2. Draw a scnen 99.99% similar to the following:
 
 ![run](res/demo.gif)
+
+3. Simple Bicycle 
+
+![bicycle](res/bicycle.png)
