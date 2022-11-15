@@ -6,8 +6,8 @@
 void Homework::DrawLine(Point startPoint, Point endPoint)
 {
 	glBegin(GL_LINES);
-	glVertex2f(startPoint.x, startPoint.y);
-	glVertex2f(endPoint.x, endPoint.y);
+	glVertex3f(startPoint.x, startPoint.y, endPoint.z);
+	glVertex3f(endPoint.x, endPoint.y, endPoint.z);
 	glEnd();
 }
 
@@ -35,17 +35,18 @@ void Homework::DrawSolidCircle(Point center, float radius)
 {
 	int steps = 360;
 	float theta = 0;
+	float depth = center.z;
 	glBegin(GL_TRIANGLES);
 	for (int step = 0; step <= steps; step++)
 	{
 		float x = center.x + radius * cos(theta);
 		float y = center.y + radius * sin(theta);
-		glVertex2f(x, y);
+		glVertex3f(x, y, depth);
 		theta = theta + .5;
 		x = center.x + radius * cos(theta);
 		y = center.y + radius * sin(theta);
-		glVertex2f(x, y);
-		glVertex2f(center.x, center.y);
+		glVertex3f(x, y, depth);
+		glVertex3f(center.x, center.y, depth);
 		theta = theta + .5;
 	}
 	glEnd();
@@ -60,11 +61,11 @@ void Homework::DrawCircle(Point center, float radius)
 	{
 		float x = center.x + radius * cos(theta);
 		float y = center.y + radius * sin(theta);
-		glVertex2f(x, y);
+		glVertex3f(x, y, center.z);
 		theta = theta + .5;
 		x = center.x + radius * cos(theta);
 		y = center.y + radius * sin(theta);
-		glVertex2f(x, y);
+		glVertex3f(x, y, center.z);
 		theta = theta + .5;
 	}
 	glEnd();
@@ -84,7 +85,7 @@ void Homework::DrawArc(Point center, float radius, float startAngle, float endAn
 	{
 		float x = center.x + radius * cos(theta * 3.14 / 180);
 		float y = center.y + radius * sin(theta * 3.14 / 180);
-		glVertex2f(x, y);
+		glVertex3f(x, y, center.z);
 	}
 	glEnd();
 }
@@ -189,13 +190,13 @@ void Homework::DrawCharacter(Point nose, float bodyLength, float headRadius, flo
 	DrawArc(mouth, .5f, 200, 330);
 
 	// Draw left eye + eyebrow
-	Point leftEye{nose.x - 1, nose.y + 1};
+	Point leftEye{nose.x - 1, nose.y + 1, nose.z};
 	DrawCircle(leftEye, .2f);
 	leftEye.y += 0.5f;
 	DrawArc(leftEye, .3f, 60, 120);
 
 	// Draw right eye
-	Point rightEye{nose.x + 1, nose.y + 1};
+	Point rightEye{nose.x + 1, nose.y + 1, nose.z};
 	DrawCircle(rightEye, .2f);
 	rightEye.y += 0.4f;
 	DrawArc(rightEye, .3f, 60, 120);
@@ -203,21 +204,21 @@ void Homework::DrawCharacter(Point nose, float bodyLength, float headRadius, flo
 	DrawCircle(nose, headRadius);
 
 	// Draw body
-	Point bodyStart{nose.x, nose.y - headRadius};
-	Point bodyEnd{nose.x, nose.y - headRadius - bodyLength};
+	Point bodyStart{nose.x, nose.y - headRadius, nose.z};
+	Point bodyEnd{nose.x, nose.y - headRadius - bodyLength, nose.z};
 	DrawLine(bodyStart, bodyEnd);
 
 	// Draw hands
-	Point handsStart{bodyStart.x, bodyStart.y - 1};
-	Point rightHandEnd{handsStart.x + handLength, handsStart.y - handLength,};
-	Point leftHandEnd{handsStart.x - handLength, handsStart.y - handLength,};
+	Point handsStart{bodyStart.x, bodyStart.y - 1, bodyStart.z};
+	Point rightHandEnd{handsStart.x + handLength, handsStart.y - handLength, handsStart.z};
+	Point leftHandEnd{handsStart.x - handLength, handsStart.y - handLength, handsStart.z};
 	DrawLine(handsStart, rightHandEnd);
 	DrawLine(handsStart, leftHandEnd);
 
 	// Draw legs
-	Point legsStart{bodyEnd.x, bodyEnd.y};
-	Point rightLegEnd{legsStart.x + legLength, legsStart.y - legLength,};
-	Point leftLegEnd{legsStart.x - legLength, legsStart.y - legLength,};
+	Point legsStart{bodyEnd};
+	Point rightLegEnd{legsStart.x + legLength, legsStart.y - legLength, legsStart.z};
+	Point leftLegEnd{legsStart.x - legLength, legsStart.y - legLength, legsStart.z};
 	DrawLine(legsStart, rightLegEnd);
 	DrawLine(legsStart, leftLegEnd);
 }
@@ -246,8 +247,8 @@ void Homework::DrawBicycle(Point seatCenterPoint, float wheelRadius, float dista
 	                wheelRadius);
 
 	// Steering Wheel
-	Point topP{ ep.x, ep.y + 1 };
+	Point topP{ep.x, ep.y + 1};
 	DrawLine(ep, topP);
-	DrawLine(topP, Point{topP.x - 0.5f,topP.y - 0.5f, topP.z + 0.5f});
-	DrawLine(topP, Point{topP.x - 0.5f,topP.y + 0.5f, topP.z - 0.5f});
+	DrawLine(topP, Point{topP.x - 0.5f, topP.y - 0.5f, topP.z + 0.5f});
+	DrawLine(topP, Point{topP.x - 0.5f, topP.y + 0.5f, topP.z - 0.5f});
 }

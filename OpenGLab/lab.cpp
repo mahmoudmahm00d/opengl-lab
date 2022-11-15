@@ -55,48 +55,99 @@ int InitGL(GLvoid) // All Setup For OpenGL Goes Here
 	return TRUE; // Initialization Went OK
 }
 
-float x = -10.0f;
-Point c = {0, 4};
-Point c2 = {0, 5};
-Point sp = {-1, 4.0};
-Point ep = {1, 4.0};
-
-void DrawMovingCircleOverCosineWave()
+void LookAtExample()
 {
-	glPointSize(3);
-	glColor3f(0, 1, 0);
-	const float minX = -10.0f;
-	const float maxX = 10.0f;
-	Homework::DrawCosineWave(minX, maxX);
+	float cameraDepth = 0.0f; // What would you see in case of 0? -30?
+	gluLookAt(0, 0, cameraDepth,
+	          0, 0, -1,
+	          0, 1, 0);
 	glColor3f(1, 0, 0);
-	Homework::DrawSolidCircle(Point(x, cos(x)), 1);
-	x = x + 0.25f;
-	if (x > maxX)
-		x = minX;
+	Homework::DrawSolidCircle(Point{0, 0, -10}, 2);
+	glColor3f(0, 0, 1);
+	Homework::DrawSolidCircle(Point{0, 0, -20}, 2);
 }
 
-void DrawCharacter()
+void NoTransformationExample()
 {
-	Homework::DrawCharacter(Point{-10, 10}, 4, 2.5, 1.5, 1.25);
+	// The next 3 lines will draw an overlapped characters
+	Point nose{-10, 10, -40};
+	Homework::DrawCharacter(nose, 4, 2.5, 1.5, 1.25);
+	Homework::DrawCharacter(nose, 4, 2.5, 1.5, 1.25);
+	Homework::DrawCharacter(nose, 4, 2.5, 1.5, 1.25);
 }
 
-#define PI 3.14159265
+void SimpleTransformationExample()
+{
+	// Note that we won't change the nose position of any character at all
+	Point nose{-10, 10, -40};
+
+	// Draw First one
+	Homework::DrawCharacter(nose, 4, 2.5, 1.5, 1.25);
+
+	// move the coords before drawing the second one
+	glTranslated(10, 0, 0);
+	Homework::DrawCharacter(nose, 4, 2.5, 1.5, 1.25);
+
+	// move the coords by another 10 units before drawing the last one
+	glTranslated(10, 0, 0);
+	Homework::DrawCharacter(nose, 4, 2.5, 1.5, 1.25);
+}
+
+void FullTransformationExample()
+{
+	// Note that we won't change the nose position of any character at all
+	Point nose{0, 0, -50};
+
+	// Draw First one
+	glTranslated(-15, 0, 0);
+	Homework::DrawCharacter(nose, 4, 2.5, 1.5, 1.25);
+
+	// move and rotate the coords before drawing the second one
+	// Q1. Does the order matters?
+	glTranslated(15, 0, 0);
+	glRotated(45, 0, 0, 1);
+	Homework::DrawCharacter(nose, 4, 2.5, 1.5, 1.25);
+
+	// move, rotate and scale the coords before drawing the last one
+	// Q2. Does the order matters?
+	glRotated(-45, 0, 0, 1);
+	glTranslated(15, 0, 0);
+	glScaled(1.5, 1.5, 1);
+	Homework::DrawCharacter(nose, 4, 2.5, 1.5, 1.25);
+}
+
+void FullPushPopExample()
+{
+	glPushMatrix(); // save the current matrix
+
+	Point nose{0, 0, -50};
+
+	glTranslated(-15, 0, 0); // move the current matrix
+	Homework::DrawCharacter(nose, 4, 2.5, 1.5, 1.25);
+
+	glPopMatrix(); // restore the saved matrix
+	glPushMatrix(); // save it before new changes
+	glRotated(45, 0, 0, 1); // rotate the matrix
+	Homework::DrawCharacter(nose, 4, 2.5, 1.5, 1.25);
+
+	glPopMatrix(); // restore the non-moved, non-rotated matrix
+	glTranslated(15, 0, 0); // move
+	glScaled(1.5, 1.5, 1); // scale
+	Homework::DrawCharacter(nose, 4, 2.5, 1.5, 1.25);
+
+	glPopMatrix(); // restore the original (non-moved, non-scaled matrix)
+}
 
 void DrawGLScene() // Here's Where We Do All The Drawing
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear Screen And Depth Buffer
 	glLoadIdentity();
-	float zsx = sin(0);
-	glTranslated(0, 0, -15);
-	// glPointSize(1);
-	// glLineWidth(1);
-	// DrawMovingCircleOverCosineWave();
-	// glScaled(0.75, 0.75, 1);
-	// glPointSize(2);
-	// glLineWidth(2);
-	// DrawCharacter();
-	glColor3f(0.5f, 1, 0.5f);
-	Homework::DrawBicycle(Point{0, 3}, 1, 2);
+
+	LookAtExample();
+	// NoTransformationExample();
+	// SimpleTransformationExample();
+	// FullTransformationExample();
+	// FullPushPopExample();
 	SwapBuffers(hDC);
 }
 
