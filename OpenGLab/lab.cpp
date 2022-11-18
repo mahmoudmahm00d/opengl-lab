@@ -1,11 +1,12 @@
 /*
-*		This Code Was Created By Jeff Molofee 2000
-*		A HUGE Thanks To Fredric Echols For Cleaning Up
-*		And Optimizing This Code, Making It More Flexible!
-*		If You've Found This Code Useful, Please Let Me Know.
-*		Visit My Site At nehe.gamedev.net
-*/
+ *		This Code Was Created By Jeff Molofee 2000
+ *		A HUGE Thanks To Fredric Echols For Cleaning Up
+ *		And Optimizing This Code, Making It More Flexible!
+ *		If You've Found This Code Useful, Please Let Me Know.
+ *		Visit My Site At nehe.gamedev.net
+ */
 
+#include <cmath>
 #include <windows.h>		// Header File For Windows
 #include <gl\gl.h>			// Header File For The OpenGL32 Library
 #include <gl\glu.h>			// Header File For The GLu32 Library
@@ -13,6 +14,7 @@
 
 #include "Homework.h"
 #include "Point.h"
+
 HDC hDC = NULL; // Private GDI Device Context
 HGLRC hRC = NULL; // Permanent Rendering Context
 HWND hWnd = NULL; // Holds Our Window Handle
@@ -193,11 +195,11 @@ GLvoid KillGLWindow(GLvoid) // Properly Kill The Window
 }
 
 /*	This Code Creates Our OpenGL Window.  Parameters Are:					*
-*	title			- Title To Appear At The Top Of The Window				*
-*	width			- Width Of The GL Window Or Fullscreen Mode				*
-*	height			- Height Of The GL Window Or Fullscreen Mode			*
-*	bits			- Number Of Bits To Use For Color (8/16/24/32)			*
-*	fullscreenflag	- Use Fullscreen Mode (TRUE) Or Windowed Mode (FALSE)	*/
+ *	title			- Title To Appear At The Top Of The Window				*
+ *	width			- Width Of The GL Window Or Fullscreen Mode				*
+ *	height			- Height Of The GL Window Or Fullscreen Mode			*
+ *	bits			- Number Of Bits To Use For Color (8/16/24/32)			*
+ *	fullscreenflag	- Use Fullscreen Mode (TRUE) Or Windowed Mode (FALSE)	*/
 
 BOOL CreateGLWindow(char* title, int width, int height, byte bits, bool fullscreenflag)
 {
@@ -459,6 +461,7 @@ int WINAPI WinMain(HINSTANCE hInstance, // Instance
 	{
 		return 0; // Quit If Window Was Not Created
 	}
+
 
 	//Set drawing timer to 20 frame per second
 	UINT timer = SetTimer(hWnd, 0, 50, (TIMERPROC)NULL);

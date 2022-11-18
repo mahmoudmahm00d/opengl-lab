@@ -152,27 +152,27 @@ void Homework::DrawArc(Point startPoint, Point endPoint, float radius)
 }
 
 
-void Homework::DrawSineWave(float xStart, float xEnd)
+void Homework::DrawSineWave(float xStart, float xEnd, float depth)
 {
 	glBegin(GL_POINTS);
 	const float precision = 0.1f;
 	float x = xStart;
 	while (x < xEnd)
 	{
-		glVertex2f(x, sin(x));
+		glVertex3f(x, sin(x), depth);
 		x = x + precision;
 	}
 	glEnd();
 }
 
-void Homework::DrawCosineWave(float xStart, float xEnd)
+void Homework::DrawCosineWave(float xStart, float xEnd, float depth)
 {
 	glBegin(GL_POINTS);
 	const float precision = 0.1f;
 	float x = xStart;
 	while (x < xEnd)
 	{
-		glVertex2f(x, cos(x));
+		glVertex3f(x, cos(x), depth);
 		x = x + precision;
 	}
 	glEnd();
@@ -227,27 +227,27 @@ void Homework::DrawBicycle(Point seatCenterPoint, float wheelRadius, float dista
 {
 	// Seat
 	float seatDim = 0.5f;
-	Point seatP1{seatCenterPoint.x - seatDim, seatCenterPoint.y - seatDim};
-	Point seatP2{seatCenterPoint.x - seatDim, seatCenterPoint.y + seatDim};
-	Point seatP3{seatCenterPoint.x + seatDim + 0.5f, seatCenterPoint.y};
+	Point seatP1{seatCenterPoint.x - seatDim, seatCenterPoint.y - seatDim, seatCenterPoint.z};
+	Point seatP2{seatCenterPoint.x - seatDim, seatCenterPoint.y + seatDim, seatCenterPoint.z};
+	Point seatP3{seatCenterPoint.x + seatDim + 0.5f, seatCenterPoint.y, seatCenterPoint.z};
 	DrawTriangle(seatP1, seatP2, seatP3);
-	Point bottomPointUnderTheSeat{seatCenterPoint.x, seatCenterPoint.y - seatDim - 0.5f};
+	Point bottomPointUnderTheSeat{seatCenterPoint.x, seatCenterPoint.y - seatDim - 0.5f, seatCenterPoint.z};
 	DrawLine(seatCenterPoint, bottomPointUnderTheSeat);
 
 	// Horizontal line under the seat
-	Point sp{bottomPointUnderTheSeat.x - distanceBetweenWheels, bottomPointUnderTheSeat.y};
-	Point ep{bottomPointUnderTheSeat.x + distanceBetweenWheels, bottomPointUnderTheSeat.y};
+	Point sp{bottomPointUnderTheSeat.x - distanceBetweenWheels, bottomPointUnderTheSeat.y, bottomPointUnderTheSeat.z};
+	Point ep{bottomPointUnderTheSeat.x + distanceBetweenWheels, bottomPointUnderTheSeat.y, bottomPointUnderTheSeat.z};
 	DrawLine(sp, ep);
 
 	// Back Wheel
-	DrawSolidCircle(Point{sp.x, sp.y - wheelRadius},
+	DrawSolidCircle(Point{sp.x, sp.y - wheelRadius, sp.z},
 	                wheelRadius);
 	// Front Wheel
-	DrawSolidCircle(Point{ep.x, ep.y - wheelRadius},
+	DrawSolidCircle(Point{ep.x, ep.y - wheelRadius, ep.z},
 	                wheelRadius);
 
 	// Steering Wheel
-	Point topP{ep.x, ep.y + 1};
+	Point topP{ep.x, ep.y + 1, ep.z};
 	DrawLine(ep, topP);
 	DrawLine(topP, Point{topP.x - 0.5f, topP.y - 0.5f, topP.z + 0.5f});
 	DrawLine(topP, Point{topP.x - 0.5f, topP.y + 0.5f, topP.z - 0.5f});

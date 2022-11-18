@@ -1,1 +1,1 @@
-# opengl-lab 2021-2022
+# opengl-lab 2022-2023
