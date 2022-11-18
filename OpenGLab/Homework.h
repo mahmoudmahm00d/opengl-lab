@@ -19,8 +19,8 @@ public:
 	static void DrawArc(Point startPoint, Point endPoint, float radius);
 	static void DrawArc(Point center, float radius,
 	                    float startAngle, float endAngle);
-	static void DrawSineWave(float xStart, float xEnd);
-	static void DrawCosineWave(float xStart, float xEnd);
+	static void DrawSineWave(float xStart, float xEnd, float depth);
+	static void DrawCosineWave(float xStart, float xEnd, float depth);
 	static void DrawCharacter(Point nose, float bodyLength,
 	                          float headRadius, float handLength,
 	                          float legLength);

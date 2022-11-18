@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="ReadMe.md" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="lab.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

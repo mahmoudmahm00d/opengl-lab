@@ -56,16 +56,40 @@ int InitGL(GLvoid) // All Setup For OpenGL Goes Here
 	return TRUE; // Initialization Went OK
 }
 
+float circleX = -10.0f;
+
+void DrawMovingCircleOverCosineWave(float depth)
+{
+	glPointSize(3);
+	glColor3f(0, 1, 0);
+	const float minX = -10.0f;
+	const float maxX = 10.0f;
+	Homework::DrawCosineWave(minX, maxX, depth); // todo: add third param
+	glColor3f(1, 0, 0);
+	Homework::DrawSolidCircle(Point(circleX, cos(circleX), depth), 1);
+	circleX = circleX + 0.25f;
+	if (circleX > maxX)
+		circleX = minX;
+}
+
+void HomeworkDemo(float depth)
+{
+	glPointSize(1);
+	glLineWidth(1);
+	DrawMovingCircleOverCosineWave(depth);
+	glScaled(0.75, 0.75, 1);
+	glPointSize(2);
+	glLineWidth(2);
+	Homework::DrawCharacter(Point{-10, 10, depth}, 4, 2.5, 1.5, 1.25);
+	glColor3f(0.5f, 1, 0.5f);
+	Homework::DrawBicycle(Point{0, 6, depth}, 1, 2);
+}
+
 void DrawGLScene() // Here's Where We Do All The Drawing
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear Screen And Depth Buffer
 	glLoadIdentity();
-	glTranslated(0, 0, -25);
-	glColor3f(1, 0, 0);
-	// TODO-2: Draw the scene similar to the one in `../res/demo.gif`
-	// remove the next rectangle
-	Homework::DrawRectangle(Point{1, 1}, Point{-1, 1},
-	                        Point{-1, -1}, Point{1, -1});
+	HomeworkDemo(-25);
 	SwapBuffers(hDC);
 }
 
