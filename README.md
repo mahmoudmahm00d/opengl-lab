@@ -30,7 +30,7 @@ Game Specifications: There'll be a land with N separated trees and a dino that i
 
 ---
 
-3. **Groups (21,22): Simplified Bomber-Jet Game**
+**Groups (21,22): Simplified Bomber-Jet Game**
 
 ![Image](res/bomber-jet.png)
 
