@@ -26,7 +26,7 @@ Game Specifications: There'll be a land with N separated trees and a dino that i
 - There will be N hits available.
 - The dino is running automatically, you can not control its movement (i.e. no stop or go-back moves).
 - The user wins if he jumps over all of the N trees.
-- Similar -but not exact- game can be found [here] (chrome://dino/) (In google chrome browsers).
+- Similar -but not exact- game can be found [here](chrome://dino/) (In google chrome browsers).
 
 ---
 
@@ -43,5 +43,5 @@ Game Specifications: There'll be a land with N separated trees and a jet that is
 
 Final Notes:
 - Each group will be asked to edit the game at the first 15 minutes of the class time (there'll be 1.5 marks penalty loss for not being able to edit the code).
-- Discussion is available [here]()
+- Discussion is available [here](https://github.com/MuhammadSulaiman001/opengl-lab/discussions/3)
 - Deadline ends at 2022-12-7
