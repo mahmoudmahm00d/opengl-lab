@@ -26,7 +26,7 @@ Game Specifications: There'll be a land with N separated trees and a dino that i
 - There will be N hits available.
 - The dino is running automatically, you can not control its movement (i.e. no stop or go-back moves).
 - The user wins if he jumps over all of the N trees.
-- Similar -but not exact- game can be found [here](chrome://dino/) (In google chrome browsers).
+- Similar -but not exact- game can be found at <ins>chrome://dino/</ins> (in google chrome, copy-paste the previous link).
 
 ---
 
