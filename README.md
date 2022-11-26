@@ -23,7 +23,6 @@ Game Specifications: There are 9 holes and a hammer, a mole would pop its head r
 ![Image](res/dino.png)
 
 Game Specifications: There'll be a land with N separated trees and a dino that is running at speed S. When the user presses SPACE key, the dino will jump.
-- There will be N jumps available.
 - The dino is running automatically, you can not control its movement (i.e. no stop or go-back moves).
 - The user wins if he jumps over all of the N trees, otherwise, he'll lose.
 - Jump height is a globla variable as well
