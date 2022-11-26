@@ -1,47 +1,47 @@
-# prolog-lab 
+# Homework2 - 2022 *(initial version)*
 
-2022-2023
-
-## Notes:
-
-1. There will be a ***separate branch for each lecture***, 
-   - Please, make sure to download the code for the new lecture before getting into the lab (I'll update the code 1-2 days before the lab day).
-2. **Useful [git](https://git-scm.com/download/win) commands**
-    1. Clone this repo: `git clone https://github.com/MuhammadSulaiman001/opengl-lab.git`
-    2. List all available branches: `git branch -a`
-    3. Checkout {branch-name} branch: `git checkout {branch-name}`
-3. Don't hesitate to start a [disscussion](https://github.com/MuhammadSulaiman001/opengl-lab/discussions), open an issue or create a pull requests..
-
-## Environment Setup
-
-Files can be found in [this folder](/setup%20files/)..
-
-1. Copy the content from "setup files\header files" to "VC\Auxiliary\VS\include", example paths:
-	- C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\VS\include
-	- C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\VS\include
-
-2. Copy the content from "setup files\libs" to "VC\Auxiliary\VS\lib\x86", example paths:
-	- C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\VS\lib\x86
-	- C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\VS\lib\x86
-
-	2.1. Copy the files that does not end with "32" to x64 folder.
-
-3. Copy the content from "setup files\dlls" to "C:\Windows\System32"
-
-## Visual Studio<sup>[1]</sup> Configuration
-
-- Project Properties -> Linker -> Input 
-		-> Additional Dependencies 
-		-> Edit -> past: **GLAUX.lib;GLU32.lib;glut.lib;OPENGL32.lib;glut32.lib**
-		-> Ok -> Apply
-
-- Project Properties -> Linker -> System -> SubSystem = Windows -> Ok -> Apply
-
-- Project Properties -> Advanced 
--> Charechter set = "Use multi-byte character set"
-
-- Project Properties -> Configuration Manager -> 
-Active Solution Platform = x86, Platform = Win32, Check Build.
+General notes:
+- This file will be updated until the final version comes out at 2022-11-28.
+- Students must attend at their own group/time, stick with their own task.. changing groups/times/tasks is not permissable at all.
+- Sounds, Texts & Textures are not required, but you'll get 1 mark bonus for implementing each one of them.
 
 ---
-<sup>[1]</sup> You can use whatever version you want! Personally, I use Visual Studio 2022
+
+**Groups (11,12): Simplified Whack-A-Mole Game.**
+
+![Image](res/whack-a-mole.jpg)
+
+Game Specifications: There are 9 holes and a hammer, a mole would pop its head randomly from one hole at a time. When the user presses a key from 1-9, the hammer will hit the corresponding hole. User score will increase by 1 if the hammer hits the mole. 
+- There are N hits available.
+- User wins if he scores S points.
+- Similar -but not exact- game can be found [here](https://www.memory-improvement-tips.com/whack-a-mole-game-window.html)
+
+---
+
+**Groups (5,6): Simplified Dino Game**
+
+![Image](res/dino.png)
+
+Game Specifications: There'll be a land with N separated trees and a dino that is running at speed S. When the user presses SPACE key, the dino will jump.
+- There will be N hits available.
+- The dino is running automatically, you can not control its movement (i.e. no stop or go-back moves).
+- The user wins if he jumps over all of the N trees.
+- Similar -but not exact- game can be found [here] (chrome://dino/) (In google chrome browsers).
+
+---
+
+3. **Groups (21,22): Simplified Bomber-Jet Game**
+
+![Image](res/bomber-jet.png)
+
+Game Specifications: There'll be a land with N separated trees and a jet that is flying at speed S. When the user presses SPACE key, the jet will throw a bomb.
+- There will be N bombs available.
+- The jet is moving automatically, you can not control its movement (i.e. no stop or go-back moves).
+- The user wins if he jumps over all of the N trees.
+- The bomb will be thrown vertically on x-axis.
+- Similar -but not exact- game can be found [here](https://webapps.ciihuy.com/bomberjet2d/)
+
+Final Notes:
+- Each group will be asked to edit the game at the first 15 minutes of the class time (there'll be 1.5 marks penalty loss for not being able to edit the code).
+- Discussion is available [here]()
+- Deadline ends at 2022-12-7
