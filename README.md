@@ -1,6 +1,6 @@
 # Homework2 - 2022 *(initial version)*
 
-General notes:
+**General notes:**
 - This file will be updated until the final version comes out at 2022-11-28.
 - Students must attend at their own group/time, stick with their own task.. changing groups/times/tasks is not permissable at all.
 - Sounds, Texts & Textures are not required, but you'll get 1 mark bonus for implementing each one of them.
@@ -41,7 +41,9 @@ Game Specifications: There'll be a land with N separated trees and a jet that is
 - The bomb will be thrown vertically (perpendicular to x-axis).
 - Similar -but not exact- game can be found [here](https://webapps.ciihuy.com/bomberjet2d/)
 
-Final Notes:
+---
+
+**Final Notes:**
 - In the first 15 minutes of the class time, each group will be asked to edit the game (there'll be 1.5 marks penalty loss for students who are not being able to edit the code).
 - Discussion is available [here](https://github.com/MuhammadSulaiman001/opengl-lab/discussions/3) for all groups
 - Deadline ends at 2022-12-7  
