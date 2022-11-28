@@ -1,4 +1,4 @@
-# Homework2 - 2022 *(initial version)*
+# Homework2 - 2022 *(final version)*
 
 **General notes:**
 - This file will be updated until the final version comes out at 2022-11-28.
